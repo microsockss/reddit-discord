@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -14,11 +14,19 @@ namespace DiscordBot
     class Program
     {
         static void Main(string[] args) => new Program().RunBotAsync().GetAwaiter().GetResult();
+        private SocketGuild _guild;
         private DiscordSocketClient _client;
         private CommandService _commands;
         private IServiceProvider _services;
 
         CommandService commands;
+
+        Image upvote = new Image("Resources/upvote.png");
+        Image downvote = new Image("Resources/downvote.png");
+
+        public Program()
+        {
+        }
 
         public async Task RunBotAsync()
         {
@@ -40,6 +48,10 @@ namespace DiscordBot
             _client.Log += Log;
 
             await RegisterCommandsAsync();
+
+            await Initialize();
+
+            await RegisterVote();
 
             await _client.LoginAsync(TokenType.Bot, botToken);
 
@@ -63,6 +75,20 @@ namespace DiscordBot
             await _commands.AddModulesAsync(Assembly.GetEntryAssembly());
         }
 
+        public async Task Initialize()
+        {
+            _client.JoinedGuild += UploadEmote;
+        }
+
+        private async Task UploadEmote(SocketGuild guild)
+        {
+            await guild.CreateEmoteAsync("upvote", upvote);
+            await Console.Out.WriteLineAsync("UPLOADED UPVOTE EMOJI");
+            await guild.CreateEmoteAsync("downvote", downvote);
+            await Console.Out.WriteLineAsync("UPLOADED DOWNVOTE EMOJI");
+            throw new NotImplementedException();
+        }
+
         public async Task RegisterVote()
         {
             _client.ReactionAdded += HandleVoteAsync;
@@ -72,13 +98,13 @@ namespace DiscordBot
 
         private async Task HandleVoteAsync(Cacheable<IUserMessage, ulong> arg1, ISocketMessageChannel arg2, SocketReaction arg3)
         {
-            var reactions = arg3.Emote;
+            var reaction = arg3.Emote;
 
             var user = arg3.UserId;
 
-            await Console.Out.WriteLineAsync("THIS IS THE USER THAT POSTED: " + user);
+            await Console.Out.WriteLineAsync("User ID: " + user);
 
-            await Console.Out.WriteLineAsync("THIS IS THE REACTIONS VARIABLE: " + reactions);
+            await Console.Out.WriteLineAsync("Reaction ID: " + reaction);
 
             throw new NotImplementedException();
         }
@@ -111,6 +137,5 @@ namespace DiscordBot
                     Console.WriteLine(result.ErrorReason);
             }
         }
-
     }
 }
