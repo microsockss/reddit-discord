@@ -5928,24 +5928,15 @@
       "Microsoft.NETCore.App >= 2.1.0"
     ]
   },
-  "packageFolders": {
-    "C:\\Users\\Ethan Barclay\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
-  },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ethan Barclay\\source\\repos\\DiscordBot\\DiscordBot\\DiscordBot.csproj",
       "projectName": "DiscordBot",
-      "projectPath": "C:\\Users\\Ethan Barclay\\source\\repos\\DiscordBot\\DiscordBot\\DiscordBot.csproj",
-      "packagesPath": "C:\\Users\\Ethan Barclay\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ethan Barclay\\source\\repos\\DiscordBot\\DiscordBot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ethan Barclay\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
