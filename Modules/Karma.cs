@@ -12,7 +12,7 @@ namespace DiscordBot.Modules
         [Command("karma")]
         public async Task KarmaAsync()
         {
-            var user = Context.User;
+            var user = Context.Message.Author.Mention;
             string commandUserId = Context.User.Id.ToString();
             int index = 0;
 
