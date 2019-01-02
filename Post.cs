@@ -10,7 +10,7 @@ namespace User_Management_System
         private int upvotes;
         private int downvotes;
         private int karma;
-        private long messageid;
+        private string messageid;
 
         public int Upvotes
         {
@@ -30,7 +30,7 @@ namespace User_Management_System
             set { karma = value; }
         }
 
-        public long MessageId
+        public string MessageId
         {
             get { return messageid; }
             set { messageid = value; }
@@ -38,7 +38,7 @@ namespace User_Management_System
 
         public Post()
         {
-            messageid = 0;
+            messageid = null;
             upvotes = 0;
             downvotes = 0;
             karma = 0;
