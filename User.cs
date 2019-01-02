@@ -1,13 +1,14 @@
 using System;
 using System.Text;
 
-namespace DiscordBot
+namespace User_Management_System
 {
     [Serializable]
     class User
     {
         private string userId;
         private int karma;
+        private int totalPosts;
 
         public string UserId
         {
@@ -21,10 +22,17 @@ namespace DiscordBot
             set { karma = value; }
         }
 
+        public int TotalPosts
+        {
+            get { return totalPosts; }
+            set { totalPosts = value; }
+        }
+
         public User()
         {
             userId = null;
             karma = 0;
+            totalPosts = 0;
         }
 
     }
