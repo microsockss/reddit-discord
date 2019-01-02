@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DiscordBot
+namespace User_Management_System
 {
     [Serializable]
     class Post
@@ -10,6 +10,7 @@ namespace DiscordBot
         private int upvotes;
         private int downvotes;
         private int karma;
+        private long messageid;
 
         public int Upvotes
         {
@@ -29,8 +30,15 @@ namespace DiscordBot
             set { karma = value; }
         }
 
+        public long MessageId
+        {
+            get { return messageid; }
+            set { messageid = value; }
+        }
+
         public Post()
         {
+            messageid = 0;
             upvotes = 0;
             downvotes = 0;
             karma = 0;
